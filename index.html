@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>INHOUSE MEDIA — девелоперы контента</title>
+<meta name="description" content="INHOUSE.MEDIA — SMM и контент для девелоперов: кейсы, видеопродакшн, креатив.">
+<meta property="og:title" content="INHOUSE MEDIA — девелоперы контента">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#121212">
+<link rel="canonical" href="https://inhouse.media/cases/">
+<meta property="og:url" content="https://inhouse.media/cases/">
+<meta property="og:site_name" content="INHOUSE.MEDIA">
+<script>(function(){var p=location.pathname;if(/\/cases$/.test(p)){location.replace(p+"/"+location.search+location.hash);}})();</script>
+
+<link rel="icon" href="media/1224e15887a46fdfa9a67b7018096cc2.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+
+@font-face{font-family:"Druk Text Wide Cyr";src:url("fonts/druktextwidecyr-medium.otf") format("opentype");font-weight:100 900;font-display:block}
+@font-face{font-family:"TT Norms";src:url("fonts/TTNorms-Bold.ttf") format("truetype");font-weight:100 900;font-display:block}
+@font-face{font-family:"TT Norms ExtraLight";src:url("fonts/TTNorms-ExtraLight.ttf") format("truetype");font-weight:100 900;font-display:block}
+@font-face{font-family:"DeckIcons";src:url("fonts/icons.woff2") format("woff2");font-display:block}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;border:0 solid}
+html,body{height:100%;background:#000;overflow:hidden;overscroll-behavior:none}
+body{font-family:"Golos Text",Arial,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+
+/* ---------- stage ---------- */
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0;background:#121212;overflow:hidden}
+
+/* ---------- slide content (deck subset defaults) ---------- */
+.deck>section{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;display:flex;flex-direction:column;
+  font-size:32px;line-height:1.4;font-weight:400;opacity:0;visibility:hidden;z-index:0}
+.deck>section.active{opacity:1;visibility:visible;z-index:2}
+.deck>section.leaving{visibility:visible;z-index:1}
+.deck>section[hidden]{display:none}
+.deck section div{display:flex;flex-direction:column;min-width:0;min-height:0}
+.deck section h1{font-size:96px;font-weight:600;line-height:1.1}
+.deck section h2{font-size:64px;font-weight:600;line-height:1.15}
+.deck section h3{font-size:44px;font-weight:600;line-height:1.2}
+.deck section p,.deck section li{font-size:inherit;line-height:1.4}
+.deck section ul,.deck section ol{padding-left:1.15em;font-size:inherit;line-height:1.4}
+.deck section ul{list-style:disc}.deck section ol{list-style:decimal}
+.deck section a{color:inherit;text-decoration:inherit;cursor:pointer}
+.deck section b{font-weight:700}
+.deck section img,.deck section video{display:block;max-width:none}
+.deck section svg{display:block;overflow:visible}
+.deck section aside{display:none}
+.deck section x-icon{display:flex;align-items:center;justify-content:center;font-family:"DeckIcons";line-height:1;font-style:normal;font-weight:400;speak:never}
+.deck section video{background:#000;cursor:pointer}
+.deck section .x-conn{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;overflow:visible}
+
+/* ---------- chrome ---------- */
+#bar{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:4px;
+  padding:6px;background:rgba(18,18,18,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);
+  border-radius:999px;z-index:10;transition:opacity .3s,transform .3s;font:500 14px/1 "Golos Text",Arial,sans-serif}
+body.idle #bar{opacity:0;transform:translateX(-50%) translateY(12px);pointer-events:none}
+#bar button{width:40px;height:40px;border-radius:50%;background:transparent;color:#fff;display:grid;place-items:center;cursor:pointer}
+#bar button:hover{background:rgba(255,255,255,.1)}
+#bar button:focus-visible{outline:2px solid #FBE317;outline-offset:1px}
+#bar svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#count{min-width:72px;text-align:center;color:#d9d9d9;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+#count b{color:#FBE317;font-weight:600}
+#progress{position:fixed;left:0;top:0;height:3px;background:#FBE317;z-index:11;transition:width .35s cubic-bezier(.2,.7,.2,1)}
+
+/* ---------- overview ---------- */
+#grid{position:fixed;inset:0;z-index:20;background:#0a0a0a;overflow:auto;padding:72px 24px 40px;display:none}
+#grid.open{display:block}
+#grid .wrap{max-width:1600px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+#grid .th{position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;contain:paint;clip-path:inset(0 round 8px);cursor:pointer;background:#121212;outline:2px solid transparent;transition:outline-color .2s,transform .2s}
+#grid .th:hover{transform:translateY(-2px);outline-color:rgba(255,255,255,.35)}
+#grid .th.cur{outline-color:#FBE317}
+#grid .th .mini{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;pointer-events:none}
+#grid .th .mini>section{opacity:1;visibility:visible;z-index:1}
+#grid .th .n{position:absolute;left:8px;bottom:8px;z-index:3;font:600 13px/1 "Golos Text",Arial,sans-serif;background:rgba(0,0,0,.7);color:#fff;padding:5px 7px;border-radius:5px}
+#grid .close{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:24px;cursor:pointer;z-index:21}
+#grid h2{position:fixed;top:24px;left:24px;font:600 16px/1 "Golos Text",Arial,sans-serif;color:#d9d9d9;letter-spacing:.04em;text-transform:uppercase}
+#grid h2 span{color:#FBE317}
+
+#loader{position:fixed;inset:0;background:#121212;display:grid;place-items:center;z-index:30;transition:opacity .4s}
+#loader.done{opacity:0;pointer-events:none}
+#loader div{width:48px;height:48px;border-radius:50%;border:3px solid rgba(251,227,23,.2);border-top-color:#FBE317;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#progress{transition:none}}
+</style>
+</head>
+<body>
+<div id="loader"><div></div></div>
+<div id="progress"></div>
+<div id="viewport"><div id="stage" class="deck">
+<section id="cover" data-transition="fade" style="display:flex; flex-direction:column; gap:96px; justify-content:center; padding:128px 160px; background:#121212">
+  <div data-build-in="fade 1 auto" style="position:absolute; top:0; left:0; width:1920px; height:1080px; background:#FBE317"></div>
+  <div style="position:absolute; top:0; left:0; width:1920px; height:1080px; display:flex; flex-direction:column; background:#121212; border-radius:0 0 256px 0">
+  </div>
+  <p style="position:absolute; top:0; left:0; width:1920px; font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:300px; line-height:1; white-space:nowrap; color:#191919">INHOUSE<br>MEDIA</p>
+  <h1 data-build-in="rise 2 auto" style="position:absolute; left:160px; top:262px; width:1600px; font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:120px; font-weight:500; line-height:1.02; letter-spacing:-2px; text-transform:uppercase; color:#ffffff"><span style="color:#FBE317">INHOUSE.MEDIA —</span><br>девелоперы<br>контента</h1>
+  <div data-build-in="fade 3 auto" style="position:absolute; left:160px; top:718px; width:1500px; display:flex; flex-direction:row; gap:32px; align-items:start">
+    <div style="display:flex; flex-direction:column; padding:14px 0 0">
+      <div style="width:680px; height:2px; display:flex; flex-direction:column; background:#FBE317">
+      </div>
+    </div>
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#ffffff">est. 2022</p>
+    <div style="display:flex; flex-direction:column; gap:6px">
+      <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:1px; color:#ffffff"><span style="color:#FBE317">↗</span> <a href="https://inhouse.media">INHOUSE.MEDIA</a></p>
+      <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:1px; color:#918f8f">@SASHAINHOUSE</p>
+      <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:1px; color:#918f8f">HI@INHOUSE.MEDIA</p>
+    </div>
+  </div>
+  <img data-build-in="fade 3 auto" src="media/1224e15887a46fdfa9a67b7018096cc2.svg" alt="Логотип INHOUSE MEDIA" style="position:absolute; left:1525px; top:718px; width:235px; height:160px; object-fit:contain">
+</section>
+
+
+<section id="structure" data-transition="fade" style="display:flex; flex-direction:column; gap:96px; justify-content:center; padding:112px 128px 160px; background:#121212">
+  <div style="width:820px; display:flex; flex-direction:column; gap:96px; flex:0 0 auto">
+    <h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">мы создали<br>мощную структуру</h2>
+    <div style="display:flex; flex-direction:row; gap:120px">
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:180px; font-weight:500; line-height:1; color:#fbe317">27</p>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#d9d9d9">специалистов</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:180px; font-weight:500; line-height:1; color:#fbe317">5</p>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#d9d9d9">подразделений</p>
+      </div>
+    </div>
+  </div>
+  <div data-build-in="scale 1 auto" style="position:absolute; top:476px; left:1004px; width:788px; height:80px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#fbe317">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:30px; line-height:1; text-transform:uppercase; color:#121212">Агентство</p>
+  </div>
+  <div data-build-in="pop 2 auto" style="position:absolute; top:176px; left:1004px; width:384px; height:280px; display:flex; flex-direction:row; align-items:center; justify-content:center; padding:40px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; letter-spacing:2px; text-align:center; text-transform:uppercase">Редакция</p>
+  </div>
+  <div data-build-in="pop 2 auto" style="position:absolute; top:176px; left:1408px; width:384px; height:280px; display:flex; flex-direction:row; align-items:center; justify-content:center; padding:40px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; letter-spacing:2px; text-align:center; text-transform:uppercase">Клиентский<br>сервис</p>
+  </div>
+  <div data-build-in="pop 2 auto" style="position:absolute; top:576px; left:1004px; width:249px; height:280px; display:flex; flex-direction:row; align-items:center; justify-content:center; padding:16px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; letter-spacing:2px; text-align:center; text-transform:uppercase">Реклама</p>
+  </div>
+  <div data-build-in="pop 2 auto" style="position:absolute; top:576px; left:1273px; width:250px; height:280px; display:flex; flex-direction:row; align-items:center; justify-content:center; padding:16px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; letter-spacing:2px; text-align:center; text-transform:uppercase">Дизайн</p>
+  </div>
+  <div data-build-in="pop 2 auto" style="position:absolute; top:576px; left:1543px; width:249px; height:280px; display:flex; flex-direction:row; align-items:center; justify-content:center; padding:16px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; letter-spacing:2px; text-align:center; text-transform:uppercase">Продакшн</p>
+  </div>
+</section>
+
+
+<section id="roles" data-transition="fade" style="display:flex; flex-direction:column; padding:112px 128px 160px; background:#121212">
+  <h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:64px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">Каждый выполняет свою задачу</h2>
+  <div data-build-in="fade 1 auto" style="position:absolute; top:380px; left:500px; width:320px; display:flex; flex-direction:column; gap:12px">
+    <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:32px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Редактор</h3>
+    <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">Генерирует смыслы и креативные идеи</p>
+  </div>
+  <div data-build-in="fade 1 auto" style="position:absolute; top:380px; left:1220px; width:320px; display:flex; flex-direction:column; gap:12px">
+    <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:32px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Таргетолог</h3>
+    <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">Запускает самые рабочие рекламные связки</p>
+  </div>
+  <div data-build-in="fade 1 auto" style="position:absolute; top:540px; left:160px; width:300px; display:flex; flex-direction:column; gap:12px">
+    <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:32px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Аккаунт</h3>
+    <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">Налаживает связь, чтобы всем-всем было комфортно</p>
+  </div>
+  <div data-build-in="fade 1 auto" style="position:absolute; top:540px; left:790px; width:340px; display:flex; flex-direction:column; gap:12px">
+    <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:32px; font-weight:700; letter-spacing:1px; text-align:center; text-transform:uppercase; color:#ffffff">Дизайнер</h3>
+    <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; text-align:center; color:#d9d9d9">Определяет стиль и создает лучшие визуалы</p>
+  </div>
+  <div data-build-in="fade 1 auto" style="position:absolute; top:540px; left:1480px; width:300px; display:flex; flex-direction:column; gap:12px">
+    <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:32px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Автор</h3>
+    <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">Пишет такие тексты, от которых сердце замирает</p>
+  </div>
+  <x-connector x1="172" y1="730" x2="800" y2="878" route="vh" style="color:#6b6b6b; border-style:dashed"></x-connector>
+  <x-connector x1="512" y1="540" x2="800" y2="878" route="vh" style="color:#6b6b6b; border-style:dashed"></x-connector>
+  <x-connector x1="960" y1="720" x2="960" y2="836" style="color:#6b6b6b; border-style:dashed"></x-connector>
+  <x-connector x1="1232" y1="540" x2="1120" y2="878" route="vh" style="color:#6b6b6b; border-style:dashed"></x-connector>
+  <x-connector x1="1492" y1="730" x2="1120" y2="878" route="vh" style="color:#6b6b6b; border-style:dashed"></x-connector>
+  <p data-build-in="pop 2 auto" style="position:absolute; top:846px; left:760px; width:400px; font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:56px; line-height:1; text-align:center; text-transform:uppercase; color:#fbe317">Проект</p>
+</section>
+
+
+<section id="standards" data-transition="fade" style="background:#121212">
+  <div id="e1-dkzp41" style="position:absolute; top:360px; left:128px; width:544px; height:272px; display:flex; flex-direction:column; gap:16px; justify-content:space-between; padding:36px 40px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:24px; color:#fbe317">01</p>
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; font-weight:700; line-height:1.2; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Выстраиваем честную коммуникацию</h3>
+      <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">Прямо говорим о проблемах, если они возникают, ищем пути решения</p>
+    </div>
+  </div>
+  <div id="e2-dkzp41" style="position:absolute; top:360px; left:688px; width:544px; height:560px; display:flex; flex-direction:column; gap:16px; justify-content:space-between; padding:36px 40px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:24px; color:#fbe317">02</p>
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; font-weight:700; line-height:1.2; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Следим за рынком недвижимости</h3>
+      <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">Держим руку на пульсе</p>
+    </div>
+  </div>
+  <div id="e3-dkzp41" style="position:absolute; top:360px; left:1248px; width:544px; height:272px; display:flex; flex-direction:column; gap:16px; justify-content:space-between; padding:36px 40px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:24px; color:#fbe317">03</p>
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; font-weight:700; line-height:1.2; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Используем индивидуальный подход</h3>
+      <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">«Бутиковые» решения под каждого клиента</p>
+    </div>
+  </div>
+  <div id="e4-dkzp41" style="position:absolute; top:648px; left:128px; width:544px; height:272px; display:flex; flex-direction:column; gap:16px; justify-content:space-between; padding:36px 40px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:24px; color:#fbe317">04</p>
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; font-weight:700; line-height:1.2; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Регулярно отслеживаем тренды в SMM</h3>
+      <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">Оперативно реагируем на инфоповоды</p>
+    </div>
+  </div>
+  <div id="e5-dkzp41" style="position:absolute; top:648px; left:1248px; width:544px; height:272px; display:flex; flex-direction:column; gap:16px; justify-content:space-between; padding:36px 40px; background:#1d1d1b; border:1px solid #3a3a38">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:24px; color:#fbe317">05</p>
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h3 style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; font-weight:700; line-height:1.2; letter-spacing:1px; text-transform:uppercase; color:#ffffff">Гибко подходим к планированию контента</h3>
+      <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.4; color:#d9d9d9">От контент-плана до медиаплана</p>
+    </div>
+  </div>
+  <h2 id="p4bef74cf2789r0-969c9905" style="position:absolute; top:128px; left:128px; width:1664px; font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:96px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">ЦЕННОСТИ И СТАНДАРТЫ</h2>
+</section>
+
+
+<section id="why-smm" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:96px">
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Зачем</span> девелоперу SMM?</h2>
+<div style="position:absolute;left:128px;top:290px;width:533px;height:630px;background:#1D1D1B;border:1px solid #3A3A38;padding:48px;display:flex;flex-direction:column;justify-content:space-between">
+<svg aria-label="Иконка: отпечаток пальца" viewBox="0 0 120 120" width="120" height="120" style="width:120px;height:120px"><g fill="none" stroke="#FBE317" stroke-width="4" stroke-linecap="round"><path d="M28 50 C32 30 48 18 62 18 C80 18 96 32 96 54"/><path d="M24 74 C22 66 23 60 25 54"/><path d="M96 64 C96 72 95 78 93 84"/><path d="M38 94 C43 80 41 68 43 58 C45 46 54 38 64 40 C76 42 82 52 80 64 C79 72 77 80 74 88"/><path d="M53 102 C59 88 61 74 61 62"/><path d="M33 82 C33 74 31 66 33 58"/></g><path d="M96 82 L100 92 L111 92 L102 98 L106 109 L96 102 L86 109 L90 98 L81 92 L92 92 Z" fill="none" stroke="#FBE317" stroke-width="3.5" stroke-linejoin="round"/></svg>
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:32px;font-weight:700;line-height:1.25;letter-spacing:1px;text-transform:uppercase"><span style="color:#FBE317">Точка</span> касания на пути к покупке</p>
+</div>
+<div style="position:absolute;left:693px;top:290px;width:533px;height:630px;background:#1D1D1B;border:1px solid #3A3A38;padding:48px;display:flex;flex-direction:column;justify-content:space-between">
+<svg aria-label="Иконка: щит с галочкой" viewBox="0 0 120 120" width="120" height="120" style="width:120px;height:120px"><g fill="none" stroke="#FBE317" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 14 L100 26 V58 C100 84 82 100 60 108 C38 100 20 84 20 58 V26 Z"/><path d="M42 60 L56 74 L80 48"/></g></svg>
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:32px;font-weight:700;line-height:1.25;letter-spacing:1px;text-transform:uppercase"><span style="color:#FBE317">Инструмент</span> повышения доверия и снижения неопределённости</p>
+</div>
+<div style="position:absolute;left:1258px;top:290px;width:534px;height:630px;background:#1D1D1B;border:1px solid #3A3A38;padding:48px;display:flex;flex-direction:column;justify-content:space-between">
+<svg aria-label="Иконка: диалог" viewBox="0 0 120 120" width="120" height="120" style="width:120px;height:120px"><g fill="none" stroke="#FBE317" stroke-width="4" stroke-linejoin="round"><path d="M12 18 H80 V66 H38 L22 80 V66 H12 Z"/><path d="M44 74 V88 H84 L102 104 V88 H108 V40 H88"/></g><g fill="#FBE317"><circle cx="32" cy="42" r="4.5"/><circle cx="46" cy="42" r="4.5"/><circle cx="60" cy="42" r="4.5"/></g></svg>
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:32px;font-weight:700;line-height:1.25;letter-spacing:1px;text-transform:uppercase"><span style="color:#FBE317">Место</span> для коммуникации</p>
+</div></section>
+
+
+<section id="clients" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:128px;display:flex;flex-direction:column">
+<div data-build-in="scale 1 auto" style="position:absolute;left:64px;top:64px;width:36px;height:36px;border-right:2px solid #FBE317;border-bottom:2px solid #FBE317"></div>
+<div data-build-in="scale 1 auto" style="position:absolute;left:1820px;top:64px;width:36px;height:36px;border-left:2px solid #FBE317;border-bottom:2px solid #FBE317"></div>
+<div data-build-in="scale 1 auto" style="position:absolute;left:64px;top:980px;width:36px;height:36px;border-right:2px solid #FBE317;border-top:2px solid #FBE317"></div>
+<div data-build-in="scale 1 auto" style="position:absolute;left:1820px;top:980px;width:36px;height:36px;border-left:2px solid #FBE317;border-top:2px solid #FBE317"></div>
+<p data-build-in="fade 1 auto" style="position:absolute;left:180px;top:300px;width:600px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:4px;color:#918F8F">КЛИЕНТЫ И КЕЙСЫ</p>
+<h1 data-build-in="left 1 auto" style="position:absolute;left:180px;top:370px;width:1500px;font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:160px;font-weight:500;line-height:1;text-transform:uppercase;color:#FBE317">Клиенты</h1>
+<p data-build-in="fade 1 auto" style="position:absolute;left:540px;top:570px;width:1100px;font-family:'TT Norms ExtraLight', Arial, sans-serif;font-size:48px;line-height:1.15;letter-spacing:1px;text-transform:uppercase;color:#FFFFFF">Лучшая иллюстрация<br>успешности нашего подхода</p>
+<div data-build-in="left 2 auto" style="position:absolute;left:360px;top:730px;width:1440px;height:2px;background:linear-gradient(90deg, rgba(255,255,255,0) 0%, #FFFFFF 100%)"></div>
+</section>
+
+
+<section id="logos" data-transition="fade" style="display:flex; flex-direction:column; padding:112px 128px 160px; background:#121212">
+  <h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:64px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#fbe317">Наши клиенты</h2>
+  <div data-build-in="left 1 auto" style="position:absolute; top:280px; left:128px; width:1664px; height:110px; display:flex; flex-direction:row; align-items:center; justify-content:space-between">
+    <img src="media/a53ec2dc7c9409ae35af0b8ad7152a84.png" alt="Страна Девелопмент" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/a05aa3d2714511cfbafbd37aa6a4af94.png" alt="LEGENDA" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/a1566a80b599f1fcfd871627c104f62b.png" alt="TOUCH" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/1eb73b4afa9d15a5339c7787ede621cc.png" alt="October Group" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/e2f600dacc16e7895ddcdbbf89939f5e.png" alt="Аквилон" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/0201f9dfdf49b0bb11694c4e1dfbca53.png" alt="Primavera" style="width:220px; height:100px; object-fit:contain">
+  </div>
+  <div data-build-in="right 2 auto" style="position:absolute; top:450px; left:128px; width:1664px; height:110px; display:flex; flex-direction:row; align-items:center; justify-content:space-between">
+    <img src="media/be40de5885f09e120fe7e12e88c8426b.png" alt="Группа Родина" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/097d2bed234edee800874e4718fa282c.png" alt="Дом Дау" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/d9c65f305f58b755eebb89599111da1f.png" alt="TEKTA" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/cba08f9c3699d8ef8886538060bfdf35.png" alt="Капельский, 5" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/2a882cd1c9e069ed6b05022f7c1187f7.png" alt="Effect Development" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/eab3994c5e24ab850983d3982ff6c6ea.png" alt="Dream Riva" style="width:220px; height:100px; object-fit:contain">
+  </div>
+  <div data-build-in="left 3 auto" style="position:absolute; top:620px; left:128px; width:1664px; height:110px; display:flex; flex-direction:row; align-items:center; justify-content:space-between">
+    <img src="media/34566e9616deed727db1ec524cf72ec1.png" alt="Five Towers" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/439993e76e90d0d4e51255cf6a30a2f9.png" alt="Upside Development" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/b24466cdadc773bb74e250dd1cac0ca3.png" alt="Первостроитель" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/eecf315d7407d666f9b61c523967e02f.png" alt="Балтийская Коммерция" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/edd73ddcd867ed6808c6ce6424581638.png" alt="Преображенская площадь" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/a4df15587f746598484af7a1165f37d1.png" alt="Сумма Элементов" style="width:220px; height:100px; object-fit:contain">
+  </div>
+  <div data-build-in="right 4 auto" style="position:absolute; top:790px; left:128px; width:1664px; height:110px; display:flex; flex-direction:row; align-items:center; justify-content:space-between">
+    <img src="media/5db61ad3b6b7f6ff89b93d418e7e132c.png" alt="Крылатская 33" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/cabc410153d66594ef063f27189595a6.png" alt="Capital Alliance" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/e40d65e33ae5942ef660004a79f0c0b8.png" alt="OM Девелопмент" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/731661f1ee2b98a12938ab2e8a31cf86.png" alt="VÁLTRI" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/95f07c29cb84c517521520822ef7f66d.png" alt="GRAVION" style="width:220px; height:100px; object-fit:contain">
+    <img src="media/10c3a0aa32f4fbc66c73834a9dbd5495.png" alt="Dominanta" style="width:220px; height:100px; object-fit:contain">
+  </div>
+</section>
+
+
+<section id="hero-strana" data-transition="fade" style="background:#121212">
+  <img src="media/68e98d4b0f7e03db42d2583d445d50af.jpg" alt="Видеопост «Суперфуд для инвесторов»" data-video="media/4872f5884b68e63459e638bbd291f7b2.mp4" style="position:absolute; top:0; left:840px; width:1080px; height:1080px">
+  <p style="position:absolute; top:112px; left:128px; width:640px; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#ffffff"><span style="color:#fbe317">Кейс</span> / Страна Девелопмент</p>
+  <img src="media/a53ec2dc7c9409ae35af0b8ad7152a84.png" alt="Страна Девелопмент" style="position:absolute; top:200px; left:128px; width:300px; height:96px; object-fit:contain">
+  <h2 style="position:absolute; top:372px; left:128px; width:640px; font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">Рост сообщества в VK и Telegram</h2>
+  <div data-build-in="rise 1 auto" style="position:absolute; top:600px; left:128px; width:640px; display:flex; flex-direction:column; gap:8px">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:140px; font-weight:500; line-height:1; white-space:nowrap; color:#fbe317">+79%</p>
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#d9d9d9">подписчиков в Telegram: 6 004 → 10 757</p>
+  </div>
+  <p style="position:absolute; top:900px; left:128px; width:640px; padding:20px 0 0; font-family:'Golos Text', Arial, sans-serif; font-size:24px; color:#918f8f; border-top:1px solid #3a3a38">Февраль 2024 — июль 2025 · SMM</p>
+</section>
+
+
+<section id="metrics-strana" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:row;align-items:start;gap:64px;padding-bottom:40px;border-bottom:1px solid #3A3A38">
+<h2 style="flex:1;font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:52px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Как мы прокачивали<br><span style="color:#FBE317">Страну Девелопмент</span></h2>
+<div style="flex:none;width:440px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#918F8F">Период сотрудничества</p>
+<p style="font-size:32px;color:#FFFFFF">Февраль 2024 — июль 2025</p>
+</div>
+</div>
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Рост по ключевым метрикам</p>
+<div style="position:absolute;left:128px;top:381px;width:784px;display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:none;width:270px;font-size:24px;line-height:1.3;color:#D9D9D9">Подписчики VK</p><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;color:#918F8F;white-space:nowrap">21 132</p><div style="flex:1;border-top:1px solid #6B6B6B"></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;white-space:nowrap">25 063</p><p style="flex:none;width:130px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+18,6%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:none;width:270px;font-size:24px;line-height:1.3;color:#D9D9D9">Подписчики Telegram</p><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;color:#918F8F;white-space:nowrap">6 004</p><div style="flex:1;border-top:1px solid #6B6B6B"></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;white-space:nowrap">10 757</p><p style="flex:none;width:130px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+79,2%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:none;width:270px;font-size:24px;line-height:1.3;color:#D9D9D9">Постов в месяц, VK (в среднем)</p><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;color:#918F8F;white-space:nowrap">23</p><div style="flex:1;border-top:1px solid #6B6B6B"></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;white-space:nowrap">34</p><p style="flex:none;width:130px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+47,8%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:none;width:270px;font-size:24px;line-height:1.3;color:#D9D9D9">Постов в месяц, Telegram (в среднем)</p><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;color:#918F8F;white-space:nowrap">23</p><div style="flex:1;border-top:1px solid #6B6B6B"></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;white-space:nowrap">30</p><p style="flex:none;width:130px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+30,4%</p></div>
+</div>
+<div style="position:absolute;left:1008px;top:381px;width:784px;display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:none;width:270px;font-size:24px;line-height:1.3;color:#D9D9D9">Просмотры постов VK</p><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;color:#918F8F;white-space:nowrap">98 454</p><div style="flex:1;border-top:1px solid #6B6B6B"></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;white-space:nowrap">117 298</p><p style="flex:none;width:130px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+19,1%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:none;width:270px;font-size:24px;line-height:1.3;color:#D9D9D9">Просмотры постов Telegram</p><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;color:#918F8F;white-space:nowrap">60 761</p><div style="flex:1;border-top:1px solid #6B6B6B"></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;white-space:nowrap">96 668</p><p style="flex:none;width:130px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+59,1%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:none;width:270px;font-size:24px;line-height:1.3;color:#D9D9D9">ER VK</p><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;color:#918F8F;white-space:nowrap">0,34%</p><div style="flex:1;border-top:1px solid #6B6B6B"></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;white-space:nowrap">0,40%</p><p style="flex:none;width:130px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+17,6%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:none;width:270px;font-size:24px;line-height:1.3;color:#D9D9D9">ER Telegram</p><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;color:#918F8F;white-space:nowrap">0,63%</p><div style="flex:1;border-top:1px solid #6B6B6B"></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;white-space:nowrap">1,49%</p><p style="flex:none;width:130px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+136,5%</p></div>
+</div></section>
+
+
+<section id="posts-strana" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Страна Девелопмент</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Примеры <span style="color:#FBE317">контента</span></h2>
+<img src="media/fb1be3760839898cc52fbb32ca2c39c9.jpg" alt="Пост «Двор на крыше» для ЖК «Звёздный»" style="position:absolute;left:128px;top:320px;width:520px;height:520px;object-fit:cover">
+<img src="media/bb1aac8a6292e0c9f38c56dbf5e227cf.jpg" data-video="media/2078f00335a514049f52cde744440cb5.mp4" alt="Анимация «Убрать хлам из дома»" style="position:absolute;left:700px;top:320px;width:520px;height:520px;object-fit:cover">
+<img src="media/601d97338719cb28904d45307a2c48d4.jpg" alt="Пост «Дом для студента»" style="position:absolute;left:1272px;top:320px;width:520px;height:520px;object-fit:cover">
+</section>
+
+
+<section id="hero-legenda" data-transition="fade" style="background:#121212">
+  <img src="media/ea7eb6f5c6508ecc349f4e08bca04548.jpg" data-video="media/27563352ca675d34412ec8c2a2cd0f11.mp4" alt="Видео «Легенда у моря — старт продаж»" style="position:absolute; top:0; left:960px; width:960px; height:1080px; object-fit:cover">
+  <p style="position:absolute; top:112px; left:128px; width:760px; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#ffffff"><span style="color:#fbe317">Кейс</span> / LEGENDA</p>
+  <img src="media/a05aa3d2714511cfbafbd37aa6a4af94.png" alt="LEGENDA" style="position:absolute; top:200px; left:128px; width:300px; height:96px; object-fit:contain">
+  <h2 style="position:absolute; top:372px; left:128px; width:760px; font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">Канал девелопера с нуля</h2>
+  <div data-build-in="rise 1 auto" style="position:absolute; top:600px; left:128px; width:760px; display:flex; flex-direction:column; gap:8px">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:140px; font-weight:500; line-height:1; white-space:nowrap; color:#fbe317">+3249</p>
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#d9d9d9">подписчиков в Telegram: 170 → 3 419</p>
+  </div>
+  <p style="position:absolute; top:900px; left:128px; width:760px; padding:20px 0 0; font-family:'Golos Text', Arial, sans-serif; font-size:24px; color:#918f8f; border-top:1px solid #3a3a38">Июль 2023 — н. в. · SMM</p>
+</section>
+
+
+<section id="metrics-legenda" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; padding:112px 128px 160px; background:#121212">
+  <div style="display:flex; flex-direction:row; gap:64px; align-items:start; padding:0 0 40px; border-bottom:1px solid #3a3a38">
+    <h2 style="flex:1; font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">Как мы развиваем канал<br>девелопера <span style="color:#fbe317">LEGENDA</span></h2>
+    <div style="width:440px; display:flex; flex-direction:column; gap:8px; flex:0 0 auto">
+      <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#918f8f">Период сотрудничества</p>
+      <p style="font-family:'Golos Text', Arial, sans-serif; font-size:32px; color:#ffffff">Июль 2023 — н. в.</p>
+    </div>
+  </div>
+  <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#fbe317">Рост по ключевым метрикам</p>
+  <div style="position:absolute;left:128px;top:381px;width:784px;display:flex; flex-direction:column; flex:1">
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="width:250px; flex:0 0 auto; font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.3; color:#d9d9d9">Подписчики Telegram</p>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#918f8f">170</p>
+        <div style="display:flex; flex-direction:column; flex:1; border-top:1px solid #6b6b6b">
+        </div>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#ffffff">3 419</p>
+        <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+3 249</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="width:250px; flex:0 0 auto; font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.3; color:#d9d9d9">Просмотры, в среднем</p>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#918f8f">418</p>
+        <div style="display:flex; flex-direction:column; flex:1; border-top:1px solid #6b6b6b">
+        </div>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#ffffff">1 783</p>
+        <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+267%</p>
+      </div>
+    </div>
+<div style="position:absolute;left:1008px;top:381px;width:784px;display:flex; flex-direction:column; flex:1">
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="width:250px; flex:0 0 auto; font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.3; color:#d9d9d9">Постов в месяц, Telegram</p>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#918f8f">6</p>
+        <div style="display:flex; flex-direction:column; flex:1; border-top:1px solid #6b6b6b">
+        </div>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#ffffff">12</p>
+        <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">×2</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="width:250px; flex:0 0 auto; font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.3; color:#d9d9d9">ERV</p>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#918f8f">0,7%</p>
+        <div style="display:flex; flex-direction:column; flex:1; border-top:1px solid #6b6b6b">
+        </div>
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:28px; white-space:nowrap; color:#ffffff">1,89%</p>
+        <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">×1,5</p>
+      </div>
+    </div>
+  <aside>Проверить цифры: подписчики VK в исходнике совпадают с Telegram (170 → 3 419), а рост ERV с 0,7% до 1,89% — это ×2,7, а не ×1,5.</aside>
+</section>
+
+
+<section id="posts-legenda" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   LEGENDA</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Примеры <span style="color:#FBE317">контента</span></h2>
+<img src="media/578f9922ff325fb749201ab5b40dea23.jpg" data-video="media/caff254b48a7ea31ab84a38a4ad8f3ca.mp4" alt="Видео «Легенда у моря»: анонс старта продаж" style="position:absolute;left:128px;top:360px;width:598px;height:404px;object-fit:cover">
+<img src="media/be932bf75e75f7dfe5e90708008a65fd.jpg" data-video="media/3ba60db4d12a95bbdfe0e1e0ade9ea06.mp4" alt="Видео «Легенда на Охте»: коммерческие помещения" style="position:absolute;left:758px;top:360px;width:598px;height:404px;object-fit:cover">
+<img src="media/a99a3f621b56d7afd4959c3ee1c1a8ee.jpg" alt="Карточка планировки: спортклуб 149,6 м²" style="position:absolute;left:1388px;top:360px;width:404px;height:404px;object-fit:cover">
+</section>
+
+
+<section id="hero-primavera" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<img src="media/2c81441f1ce325fbcaccff66947fbe97.jpg" data-video="media/e4d973bdb5123afb8cd31566bfa5faa5.mp4" alt="Видео: бегун в парке на фоне башен «Примаверы»" style="position:absolute;left:960px;top:0px;width:960px;height:1080px;object-fit:cover">
+<div style="position:absolute;left:960px;top:0px;width:240px;height:1080px;background:linear-gradient(90deg, #121212 0%, rgba(18,18,18,0) 100%)"></div>
+<p style="position:absolute;left:128px;top:112px;width:760px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Primavera</p>
+<img src="media/0201f9dfdf49b0bb11694c4e1dfbca53.png" alt="Primavera — клубный город на реке" style="position:absolute;left:128px;top:200px;width:215px;height:96px;object-fit:contain">
+<h2 style="position:absolute;left:128px;top:372px;width:760px;font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:52px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Премиальный голос клубного города</h2>
+<div data-build-in="rise 1 auto" style="position:absolute;left:128px;top:600px;width:760px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:140px;font-weight:500;line-height:1;color:#FBE317;white-space:nowrap">×2,7</p>
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#D9D9D9">подписчиков в канале: 1 576 → 4 257</p>
+</div>
+<p style="position:absolute;left:128px;top:900px;width:760px;padding-top:20px;border-top:1px solid #3A3A38;font-size:24px;color:#918F8F">Май 2023 — н. в. · SMM, видео, креатив, реклама</p>
+</section>
+
+
+<section id="case-primavera" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Primavera · клубный город на реке</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Примавера</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:64px">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid #3A3A38"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Задача клиента</p><p style="font-size:26px;line-height:1.4;color:#FFFFFF">Усилить узнаваемость «Примаверы» и выстроить коммуникацию, соответствующую премиальному позиционированию проекта.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid #3A3A38"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Исходная точка</p><p style="font-size:26px;line-height:1.4;color:#D9D9D9">Контент ограничивался переработанными пресс-релизами. Не хватало разнообразия форматов, материалы готовились в сжатые сроки.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid #3A3A38"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Что сделали</p><ul style="font-size:26px;line-height:1.4;color:#FFFFFF"><li>Обновили стратегию канала, чтобы подача соответствовала премиальному позиционированию проекта.</li><li>Выстроили ежедневную коммуникацию через разные форматы: от карточек до видео и ИИ-анимаций.</li><li>Дополнили SMM видеоконтентом на YouTube и рекламным продвижением в VK и Telegram Ads.</li></ul></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:64px;padding-top:20px;border-top:1px solid #3A3A38"><div style="flex:none;width:800px;display:flex;flex-direction:column;gap:10px"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Срок работы</p><p style="font-size:26px;line-height:1.4;color:#D9D9D9">Май 2023 — настоящее время</p></div><div style="flex:1;display:flex;flex-direction:column;gap:10px"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Услуги</p><p style="font-size:26px;line-height:1.4;color:#D9D9D9">SMM, видео, креатив, реклама в VK и Telegram Ads</p></div></div>
+</section>
+
+
+<section id="stats-primavera" data-transition="fade" style="display:flex; flex-direction:row; gap:80px; padding:112px 128px 160px; background:#121212">
+  <div style="width:1064px; display:flex; flex-direction:column; gap:40px; flex:0 0 auto">
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#ffffff"><span style="color:#fbe317">Кейс</span> / Primavera · клубный город на реке</p>
+    <h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:56px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">Статистика <span style="color:#fbe317">канала</span></h2>
+    <div style="display:flex; flex-direction:column">
+      <div style="display:flex; flex-direction:row; gap:24px; padding:0 0 16px; border-bottom:1px solid #6b6b6b">
+        <p style="flex:1; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#918f8f">Метрика</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#918f8f">Май 2023</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#918f8f">Август 2026</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-align:center; text-transform:uppercase; color:#918f8f">Динамика</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="flex:1; font-family:'Golos Text', Arial, sans-serif; font-size:26px; color:#d9d9d9">Подписчики</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#918f8f">1 576</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#ffffff">4 257</p>
+        <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+170%</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="flex:1; font-family:'Golos Text', Arial, sans-serif; font-size:26px; color:#d9d9d9">Охваты</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#918f8f">21 750</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#ffffff">25 331</p>
+        <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+16%</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="flex:1; font-family:'Golos Text', Arial, sans-serif; font-size:26px; color:#d9d9d9">ERR</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#918f8f">2,57%</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#ffffff">3,17%</p>
+        <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+0,6 п. п.</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="flex:1; font-family:'Golos Text', Arial, sans-serif; font-size:26px; color:#d9d9d9">Реакции</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#918f8f">560</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#ffffff">803</p>
+        <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+43%</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+        <p style="flex:1; font-family:'Golos Text', Arial, sans-serif; font-size:26px; color:#d9d9d9">Количество постов</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#918f8f">33</p>
+        <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#ffffff">33</p>
+        <p style="width:200px; flex:0 0 auto; padding:4px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#918f8f; border:2px solid #6b6b6b">стабильно</p>
+      </div>
+    </div>
+  </div>
+  <img src="media/ab0e927b993b91dfc750df62eb6c970f.jpg" alt="Видео: Олег Торбосов о преимуществах полуострова Покровское-Стрешнево" data-video="media/93d474b6111e8d32fdbb9803344e8e13.mp4" style="position:absolute; top:112px; left:1338px; width:454px; height:808px">
+</section>
+
+
+<section id="posts-primavera" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Primavera · клубный город на реке</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Лучшие <span style="color:#FBE317">посты</span></h2>
+<div style="position:absolute;left:128px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/e64b460e2f800f2795510b6e5ec32f0f.jpg" alt="Пост «Светлой Пасхи» с ИИ-видео" style="width:300px;height:383px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/primavera_moscow/5159">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:469px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/69961fb412c4dbdc3ad6cf99679b18f1.jpg" alt="Видеопост «Мир! Примавера! Май!»" style="width:300px;height:320px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/primavera_moscow/5215">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:810px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/847938fc84033ef4839d0f6869e8416d.jpg" alt="Видеопост «Утро на полуострове»" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/primavera_moscow/5208">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:1151px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/fcbec357e201cc9aea0f392d50d7c2b2.jpg" alt="Карточки со стихотворением Михалкова и видами из окон" style="width:300px;height:390px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/primavera_moscow/5412">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:1492px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/4b3ee58fcff4418bbaadfcf9a6d9c1f8.jpg" alt="Карусель «4 птицы, которых можно встретить в экопарке»" style="width:300px;height:345px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/primavera_moscow/5412">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<aside>В исходном кейсе у двух последних постов (стихи Михалкова и «4 птицы») одна и та же ссылка t.me/primavera_moscow/5412 — проверить ссылку на пост с птицами.</aside></section>
+
+
+<section id="hero-october" data-transition="fade" style="background:#121212">
+  <img src="media/5746577a6abd864595b0c7e4a2004df7.jpg" alt="ИИ-ролик Stories: фасад башни и интерьеры" data-video="media/0a95c54515c01726e528862f332c4a85.mp4" style="position:absolute; top:0; left:960px; width:960px; height:1080px">
+  <div style="position:absolute; top:0; left:960px; width:240px; height:1080px; display:flex; flex-direction:column; background:linear-gradient(90deg, #121212 0%, #12121200 100%)">
+  </div>
+  <p style="position:absolute; top:112px; left:128px; width:760px; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#ffffff"><span style="color:#fbe317">Кейс</span> / October Group</p>
+  <img src="media/1eb73b4afa9d15a5339c7787ede621cc.png" alt="October Group" style="position:absolute; top:200px; left:128px; width:273px; height:96px; object-fit:contain">
+  <h2 style="position:absolute; top:372px; left:128px; width:760px; font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">ИЗ ПРОЕКТА<br>В КАНАЛ ДЕВЕЛОПЕРА</h2>
+  <div data-build-in="rise 1 auto" style="position:absolute; top:600px; left:128px; width:760px; display:flex; flex-direction:column; gap:8px">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:140px; font-weight:500; line-height:1; white-space:nowrap; color:#fbe317">4 841</p>
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#d9d9d9">подписчик в канале — старт с 0</p>
+  </div>
+  <p style="position:absolute; top:900px; left:128px; width:760px; padding:20px 0 0; font-family:'Golos Text', Arial, sans-serif; font-size:24px; color:#918f8f; border-top:1px solid #3a3a38">Апрель 2023 — н. в. · SMM, видео, креатив, Telegram Ads</p>
+</section>
+
+
+<section id="case-october" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   October Group · три проекта девелопера</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">October Group</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:64px">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid #3A3A38"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Задача клиента</p><p style="font-size:26px;line-height:1.4;color:#FFFFFF">Сформировать в соцсетях доверие к новому девелоперу и образ экспертного, надёжного застройщика. Обеспечить стабильный трафик на сайт по трём проектам.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid #3A3A38"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Исходная точка</p><p style="font-size:26px;line-height:1.4;color:#D9D9D9">Контент в канале был только о флагманском проекте Stories на Мосфильмовской и ограничивался переработанными пресс-релизами. Не хватало разнообразия форматов.</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid #3A3A38"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Что сделали</p><ul style="font-size:26px;line-height:1.4;color:#FFFFFF"><li>Каждый год обновляем стратегию канала, чтобы синхронизировать её с планами девелопера.</li><li>Разработали регламент публикаций: закрепили дни выхода и сбалансировали материалы по трём проектам.</li><li>Дополнили SMM новыми форматами, живым контентом и продвижением в Telegram Ads.</li></ul></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:64px;padding-top:20px;border-top:1px solid #3A3A38"><div style="flex:none;width:800px;display:flex;flex-direction:column;gap:10px"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Срок работы</p><p style="font-size:26px;line-height:1.4;color:#D9D9D9">Апрель 2023 — настоящее время</p></div><div style="flex:1;display:flex;flex-direction:column;gap:10px"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Услуги</p><p style="font-size:26px;line-height:1.4;color:#D9D9D9">SMM, видео, креатив, реклама в Telegram Ads</p></div></div>
+</section>
+
+
+<section id="stats-october" data-transition="fade" style="background:#121212">
+  <img src="media/8e035601b4b0d936c78d4739f3fdabf0.jpg" data-video="media/6d3c68ffeacbf676ce3f41f81c88411a.mp4" alt="Видео «Двор-патио» для Stories" id="e1-7fe39" style="position:absolute; top:112px; left:1212px; width:580px; height:392px; object-fit:cover">
+  <img src="media/ef0a4dd9a86c70d66f2408462b3603d7.jpg" data-video="media/c94007b8872f7c9dae1147a203ea9e0f.mp4" alt="Видео «Кобзон Сити»: лоты с выгодой до 13%" style="position:absolute; top:528px; left:1212px; width:580px; height:392px; object-fit:cover">
+  <div id="p040f896cd05dr0-b98f1c2a" style="position:absolute; top:224px; left:128px; width:1020px; height:808px; display:flex; flex-direction:column; gap:40px">
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#ffffff"><span style="color:#fbe317">Кейс</span> / October Group · три проекта девелопера</p>
+    <h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:56px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">Статистика <span style="color:#fbe317">канала</span></h2>
+    <div style="display:flex; flex-direction:row; gap:24px; padding:0 0 16px; border-bottom:1px solid #6b6b6b">
+      <p style="flex:1; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#918f8f">Метрика</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#918f8f">Март 2023</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#918f8f">Август 2026</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:2px; text-align:center; text-transform:uppercase; color:#918f8f">Динамика</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+      <p style="flex:1; font-family:'Golos Text', Arial, sans-serif; font-size:26px; color:#d9d9d9">Подписчики</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#918f8f">8</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#ffffff">4 841</p>
+      <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+4 833</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+      <p style="flex:1; font-family:'Golos Text', Arial, sans-serif; font-size:26px; color:#d9d9d9">Охваты</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#918f8f">12 346</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#ffffff">14 093</p>
+      <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+14%</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid #3a3a38">
+      <p style="flex:1; font-family:'Golos Text', Arial, sans-serif; font-size:26px; color:#d9d9d9">Реакции</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#918f8f">176</p>
+      <p style="width:200px; flex:0 0 auto; font-family:'TT Norms', Arial, sans-serif; font-size:30px; color:#ffffff">383</p>
+      <p style="width:200px; flex:0 0 auto; padding:6px 0; font-family:'TT Norms', Arial, sans-serif; font-size:24px; text-align:center; color:#121212; background:#fbe317">+118%</p>
+    </div>
+  </div>
+  <aside>ERR в марте 2023 (220%) посчитан на базе из 8 подписчиков — сравнивать его с текущим некорректно. Также в кейсе старт работы — апрель 2023, а первая колонка статистики — март 2023.</aside>
+</section>
+
+
+<section id="posts-october" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   October Group · три проекта девелопера</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Лучшие <span style="color:#FBE317">посты</span></h2>
+<div style="position:absolute;left:128px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/1ee0016fd0caf37bd9a7bdf08ecbb9ed.jpg" alt="Пост «Stories на Мосфильмовской: выгода до 17%»" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/octobergroup/1153">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:469px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/b611181eead1c608ab56fa4af347c98e.jpg" alt="Пост об эксклюзивном предложении на квартиры Stories" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/octobergroup/1094">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:810px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/0a2f4c5b1658ed60ee3759ca197c81d8.jpg" alt="Пост «Секретный сад КИНГ & САНС»" style="width:300px;height:417px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/octobergroup/1086">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:1151px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/4e34e0daf25d966e9d580ab1e2b949b9.jpg" alt="Видеопост о пуле квартир Stories с выгодой до 17%" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/octobergroup/1125">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:1492px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/430d1ff4b46f3a4ec9b3d6e43de35f05.jpg" alt="Пост «КИНГ & САНС: лот под объединение с террасой»" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/octobergroup/984">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+</section>
+
+
+<section id="hero-rodina" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<img src="media/facc898af4f36ee864444dd4732e168a.jpg" data-video="media/d37dd0880399e049398d55fea8330d12.mp4" alt="Видео «Вечер в гармонии»: фасад дома и набережная на закате" style="position:absolute;left:960px;top:0px;width:960px;height:1080px;object-fit:cover">
+<div style="position:absolute;left:960px;top:0px;width:240px;height:1080px;background:linear-gradient(90deg, #121212 0%, rgba(18,18,18,0) 100%)"></div>
+<p style="position:absolute;left:128px;top:112px;width:760px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Группа Родина</p>
+<img src="media/be40de5885f09e120fe7e12e88c8426b.png" alt="Группа Родина" style="position:absolute;left:128px;top:200px;width:105px;height:96px;object-fit:contain">
+<h2 style="position:absolute;left:128px;top:372px;width:760px;font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:52px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Узнаваемый голос бренда</h2>
+<div data-build-in="rise 1 auto" style="position:absolute;left:128px;top:600px;width:760px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:140px;font-weight:500;line-height:1;color:#FBE317;white-space:nowrap">+134%</p>
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#D9D9D9">реакций: 186 → 435</p>
+</div>
+<p style="position:absolute;left:128px;top:900px;width:760px;padding-top:20px;border-top:1px solid #3A3A38;font-size:24px;color:#918F8F">Апрель 2025 — н. в. · SMM, видео</p>
+</section>
+
+
+<section id="case-rodina" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; padding:112px 128px 160px; background:#121212">
+  <div style="display:flex; flex-direction:column; gap:24px">
+    <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#ffffff"><span style="color:#fbe317">Кейс</span> / Группа Родина · три кластера в одном канале</p>
+    <h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:64px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">Группа Родина</h2>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:64px">
+    <div style="display:flex; flex-direction:column; gap:28px; flex:1">
+      <div style="display:flex; flex-direction:column; gap:10px; padding:20px 0 0; border-top:1px solid #3a3a38">
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#fbe317">Задача клиента</p>
+        <p style="font-family:'Golos Text', Arial, sans-serif; font-size:26px; line-height:1.4; color:#ffffff">Выстроить узнаваемый голос бренда и продвигать инфоповоды по проектам. Группа Родина — лидер в интеграции спорта, культуры и образования в жилую среду.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; padding:20px 0 0; border-top:1px solid #3a3a38">
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#fbe317">Исходная точка</p>
+        <p style="font-family:'Golos Text', Arial, sans-serif; font-size:26px; line-height:1.4; color:#d9d9d9">Нерегулярный постинг и визуальные решения, которые не соответствовали классу недвижимости — бизнес и премиум.</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:28px; flex:1">
+      <div style="display:flex; flex-direction:column; gap:10px; padding:20px 0 0; border-top:1px solid #3a3a38">
+        <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#fbe317">Что сделали</p>
+        <ul style="font-family:'Golos Text', Arial, sans-serif; font-size:26px; line-height:1.4; color:#ffffff">
+          <li>Каждый год обновляем стратегию канала, чтобы синхронизировать её с планами девелопера.</li>
+          <li>Разработали уникальный дизайн-код девелопера для соцсетей.</li>
+          <li>Разработали и утвердили тональность для каждого из трёх ведущих кластеров в рамках одного канала.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:64px; padding:20px 0 0; border-top:1px solid #3a3a38">
+    <div style="width:800px; display:flex; flex-direction:column; gap:10px; flex:0 0 auto">
+      <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#fbe317">Срок работы</p>
+      <p style="font-family:'Golos Text', Arial, sans-serif; font-size:26px; line-height:1.4; color:#d9d9d9">Апрель 2025 — настоящее время</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; flex:1">
+      <p style="font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#fbe317">Услуги</p>
+      <p style="font-family:'Golos Text', Arial, sans-serif; font-size:26px; line-height:1.4; color:#d9d9d9">SMM, видеопродакшн</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="stats-rodina" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:row;gap:80px">
+<div style="flex:none;width:1064px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Группа Родина · три кластера в одном канале</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:56px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Статистика <span style="color:#FBE317">канала</span></h2>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;flex-direction:row;gap:24px;padding-bottom:16px;border-bottom:1px solid #6B6B6B"><p style="flex:1;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#918F8F">Метрика</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#918F8F">Март 2025</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#918F8F">Август 2026</p><p style="flex:none;width:200px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#918F8F">Динамика</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:1;font-size:26px;color:#D9D9D9">Подписчики</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#918F8F">864</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#FFFFFF">1 296</p><p style="flex:none;width:200px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+50%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:1;font-size:26px;color:#D9D9D9">Охваты</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#918F8F">10 996</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#FFFFFF">8 562</p><p style="flex:none;width:200px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:4px 0px;border:2px solid #6B6B6B;color:#918F8F">−22%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:1;font-size:26px;color:#D9D9D9">ERR</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#918F8F">3,6%</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#FFFFFF">0,75%</p><p style="flex:none;width:200px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:4px 0px;border:2px solid #6B6B6B;color:#918F8F">−2,85 п. п.</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:1;font-size:26px;color:#D9D9D9">Реакции</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#918F8F">186</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#FFFFFF">435</p><p style="flex:none;width:200px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">+134%</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:24px;padding:22px 0px;border-bottom:1px solid #3A3A38"><p style="flex:1;font-size:26px;color:#D9D9D9">Количество постов</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#918F8F">6</p><p style="flex:none;width:200px;font-family:'TT Norms', Arial, sans-serif;font-size:30px;color:#FFFFFF">22</p><p style="flex:none;width:200px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;padding:6px 0px;background:#FBE317;color:#121212">×3,7</p></div>
+</div>
+</div>
+<img src="media/e83d983eb42e5a99471083e659cdcaa7.jpg" data-video="media/b95f1e05b1e741597f78402056c1041e.mp4" alt="Видео: «Родина Парк» в окружении осенней природы" style="position:absolute;left:1338px;top:112px;width:454px;height:808px;object-fit:cover">
+<aside>Охваты и ERR снизились — стоит решить, показывать ли их клиенту, или заменить строками с ростом.</aside></section>
+
+
+<section id="posts-rodina" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Группа Родина · три кластера в одном канале</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Лучшие <span style="color:#FBE317">посты</span></h2>
+<div style="position:absolute;left:128px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/d165790b81b1a17817d91969cbc7f44a.jpg" alt="Видео из отдела продаж «Родина Переделкино»" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/rodina_group/1534">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:469px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/6b5b031729c1c84f507e6b93e82a3ac9.jpg" alt="Карусель «Инвестиционный потенциал Родина Переделкино»" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/rodina_group/1551">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:810px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/3ceb9a39505aaa5162bf4b4bd3c1be95.jpg" alt="Акция к 1 апреля «Гарантия на мужа»" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/rodina_group/1544">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:1151px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/752dcfc6703ede3d6640688d9ea7ba3f.jpg" alt="Видеопост «День больших перемен»" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/rodina_group/1542">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+<div style="position:absolute;left:1492px;top:296px;width:300px;height:520px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><img src="media/26b963721333e2f36808ec12d9c49325.jpg" alt="Карточки «Заповедная природа около Родина Парк»" style="width:300px;height:420px;object-fit:cover"><div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #3A3A38"><p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:24px;color:#FBE317"><a href="https://t.me/rodina_group/1509">Смотреть</a></p><x-icon name="Play" style="color:#FBE317;width:24px;height:24px"></x-icon></div></div>
+</section>
+
+
+<section id="video" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:128px;display:flex;flex-direction:column">
+<div data-build-in="scale 1 auto" style="position:absolute;left:64px;top:64px;width:36px;height:36px;border-right:2px solid #FBE317;border-bottom:2px solid #FBE317"></div>
+<div data-build-in="scale 1 auto" style="position:absolute;left:1820px;top:64px;width:36px;height:36px;border-left:2px solid #FBE317;border-bottom:2px solid #FBE317"></div>
+<div data-build-in="scale 1 auto" style="position:absolute;left:64px;top:980px;width:36px;height:36px;border-right:2px solid #FBE317;border-top:2px solid #FBE317"></div>
+<div data-build-in="scale 1 auto" style="position:absolute;left:1820px;top:980px;width:36px;height:36px;border-left:2px solid #FBE317;border-top:2px solid #FBE317"></div>
+<h1 data-build-in="left 1 auto" style="position:absolute;left:180px;top:430px;width:1612px;font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:120px;font-weight:500;line-height:1;text-transform:uppercase;color:#FFFFFF">Видео<span style="color:#FBE317">продакшн</span></h1>
+<div data-build-in="left 2 auto" style="position:absolute;left:360px;top:620px;width:1440px;height:2px;background:linear-gradient(90deg, rgba(255,255,255,0) 0%, #FFFFFF 100%)"></div>
+</section>
+
+
+<section id="renders" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column">
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.05;text-transform:uppercase;color:#FFFFFF">«Оживление»<br><span style="color:#FBE317">рендеров</span></h2>
+<img src="media/b2cba3817cfc9f4f2045566ae9987017.jpg" data-video="media/ac6fab9ec2fc77a1a9fe79385c89e605.mp4" alt="Оживлённый рендер: «Клуб 5», келлер в подарок" style="position:absolute;left:128px;top:400px;width:365px;height:365px;object-fit:cover">
+<img src="media/bbfce418aee2bd8209701c9b018d856b.jpg" data-video="media/f78acd624f9447e6172c8cca40334579.mp4" alt="Оживлённый рендер ДомДау: эскалатор" style="position:absolute;left:517px;top:400px;width:365px;height:365px;object-fit:cover">
+<img src="media/83c2c5c08feea40ad59ea3e4a32fc523.jpg" data-video="media/5a7a84f77afc38014d87e25cdeb63b67.mp4" alt="Оживлённый рендер: БЦ «КОРП. Молодёжная»" style="position:absolute;left:906px;top:400px;width:292px;height:365px;object-fit:cover">
+<img src="media/41b304ceab5fd87cf1d00334a53775cb.jpg" data-video="media/6314adbcdd221caa7af2e2b937652274.mp4" alt="Оживлённый рендер: Кобзон Сити" style="position:absolute;left:1222px;top:400px;width:548px;height:365px;object-fit:cover">
+</section>
+
+
+<section id="renders-2" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column">
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.05;text-transform:uppercase;color:#FFFFFF">«Оживление»<br><span style="color:#FBE317">рендеров</span></h2>
+<img src="media/1b99832cc0c0719aaabd98dc86a5ea07.jpg" data-video="media/e3265303c509fcfc950e6540a5f7bb46.mp4" alt="ИИ-ролик Stories: фасад башни" style="position:absolute;left:128px;top:330px;width:270px;height:480px;object-fit:cover">
+<img src="media/42622873a26089815f06f436e2da1977.jpg" data-video="media/8bb4e93ebada8c6a6a7f2ebbcb6f6f8e.mp4" alt="Оживлённый рендер King & Sons: эксклюзивные лоты" style="position:absolute;left:422px;top:330px;width:853px;height:480px;object-fit:cover">
+<img src="media/586d5231eeb6429fc34f3ea34d64e2e6.jpg" data-video="media/6a8a7b69c2ed8920994f454b492bb4ca.mp4" alt="Оживлённый рендер: башня в зелени" style="position:absolute;left:1299px;top:330px;width:480px;height:480px;object-fit:cover">
+</section>
+
+
+<section id="dogma-case" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<img src="media/aa480755c1207a758a0da04ea165bcab.jpg" alt="Кадр из ролика: Грейдмэн — гигант из кирпича на фоне квартала" style="position:absolute;left:0px;top:0px;width:640px;height:1080px;object-fit:cover">
+<div style="position:absolute;left:0px;top:620px;width:640px;height:460px;background:linear-gradient(180deg, rgba(18,18,18,0) 0%, #121212 80%)"></div>
+<div style="position:absolute;left:64px;top:780px;width:560px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:140px;font-weight:500;line-height:1;color:#FBE317">10</p>
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF">креативных идей → 2 ролика</p>
+</div>
+<p style="position:absolute;left:736px;top:112px;width:1056px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   DOGMA · Краснодар</p>
+<h2 style="position:absolute;left:736px;top:170px;width:1056px;font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:52px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Ролик-мультик<br>к старту продаж</h2>
+<div style="position:absolute;left:736px;top:340px;width:1056px;display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid #3A3A38">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Задача</p>
+<p style="font-size:26px;line-height:1.4">Громко заявить о старте продаж нового ЖК в Краснодаре.</p>
+</div>
+<div style="position:absolute;left:736px;top:480px;width:1056px;display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:1px solid #3A3A38">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Решение</p>
+<p style="font-size:26px;line-height:1.4">Необычный ролик-мультик к анонсу старта продаж. Разработали 10 креативных идей — от консервативных до смелых — и отобрали две, самые близкие бренду: про жизнь Кирпичика и появление Грейдмэна.</p>
+</div>
+<div style="position:absolute;left:736px;top:720px;width:1056px;display:flex;flex-direction:column;gap:16px;padding-top:20px;border-top:1px solid #3A3A38">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FBE317">Процесс</p>
+<div style="display:flex;flex-direction:row;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">1</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9">Сценарий к каждой идее</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">2</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9">Раскадровки для согласования</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">3</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9">Анимация с помощью ИИ</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">4</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9">Озвучка с помощью ИИ</p></div>
+</div>
+</div>
+</section>
+
+
+<section id="dogma" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:row;align-items:center;gap:96px">
+<div style="flex:none;width:736px;display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Результат</span>   /   DOGMA</p>
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Придумали <span style="color:#FBE317">Грейдмэна</span> и Кирпичика</h2>
+<p style="font-size:28px;line-height:1.4;color:#D9D9D9">Два ИИ-ролика к старту продаж квартала GRADE: от идеи и сценария до раскадровки, анимации и озвучки.</p>
+<p style="align-self:start;padding:22px 44px;background:#FBE317;color:#121212;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase"><a href="https://t.me/dogma_official/4793">Смотреть в канале</a></p>
+</div>
+<div style="position:absolute;left:960px;top:112px;width:400px;display:flex;flex-direction:column;gap:16px">
+<img src="media/aa480755c1207a758a0da04ea165bcab.jpg" data-video="media/e57042061e2b7e67b16486956c570b55.mp4" alt="Ролик «Грейдмэн — хранитель квартала GRADE»" style="width:400px;height:712px;object-fit:cover">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase">Грейдмэн</p>
+</div>
+<div style="position:absolute;left:1392px;top:112px;width:400px;display:flex;flex-direction:column;gap:16px">
+<img src="media/3d875d2aef83d61c5bdaaf31c0659ab2.jpg" data-video="media/2c46c2ea8ce43c10335e406ed6f17459.mp4" alt="Ролик «Всё начинается с кирпичика»" style="width:400px;height:712px;object-fit:cover">
+<p style="font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase">Кирпичик</p>
+</div>
+</section>
+
+
+<section id="construction" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column">
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.05;text-transform:uppercase;color:#FFFFFF">Динамика<br><span style="color:#FBE317">строительства</span></h2>
+<img src="media/3b67dcd2827d1bb6441721cc19034bfa.jpg" data-video="media/727e43c68a004a1efc78961afff0f6f5.mp4" alt="Ролик о ходе строительства ЖК «Свет»" style="position:absolute;left:128px;top:330px;width:978px;height:550px;object-fit:cover">
+<p style="position:absolute;left:128px;top:896px;width:978px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#918F8F">СВЕТ · Dominanta</p>
+<img src="media/816563cadf30d254b308b7ca476ba144.jpg" data-video="media/4cae6469924822616a374a44de0b3b8f.mp4" alt="Динамика строительства «Дом Горизонтов», июль 2026" style="position:absolute;left:1130px;top:330px;width:309px;height:550px;object-fit:cover">
+<p style="position:absolute;left:1130px;top:896px;width:309px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#918F8F">Дом Горизонтов</p>
+<img src="media/866ef865e09296476fc6a543b82df511.jpg" data-video="media/982fa310d019fb6118ba995eb7095347.mp4" alt="Ролик со стройплощадки «Крылатская 33»" style="position:absolute;left:1463px;top:330px;width:309px;height:550px;object-fit:cover">
+<p style="position:absolute;left:1463px;top:896px;width:309px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#918F8F">Крылатская 33</p>
+</section>
+
+
+<section id="expert" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column">
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.05;text-transform:uppercase;color:#FFFFFF">Видео<br><span style="color:#FBE317">с экспертом</span></h2>
+<img src="media/bc5937cca4c66485792a46b8c37bbe24.jpg" data-video="media/1e36917dd5aba09ea5303236db1a71f6.mp4" alt="Интервью с экспертом на террасе" style="position:absolute;left:128px;top:302px;width:338px;height:600px;object-fit:cover">
+<img src="media/2f0e670c71a150b8e905d5a1db190fba.jpg" data-video="media/eb6a58fd43876ea42b8f411da38d16de.mp4" alt="Эксперт рассказывает о клубном квартале" style="position:absolute;left:514px;top:302px;width:338px;height:600px;object-fit:cover">
+<img src="media/a1c0833f50dfb0482444a18532395b19.jpg" data-video="media/5fb1f8e8e9d08dc4d71a004f6d7fde57.mp4" alt="Эксперт в экопарке Primavera" style="position:absolute;left:900px;top:302px;width:338px;height:600px;object-fit:cover">
+<img src="media/ab0e927b993b91dfc750df62eb6c970f.jpg" data-video="media/93d474b6111e8d32fdbb9803344e8e13.mp4" alt="Олег Торбосов о преимуществах полуострова Покровское-Стрешнево" style="position:absolute;left:1286px;top:302px;width:338px;height:600px;object-fit:cover">
+</section>
+
+
+<section id="events" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column">
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:64px;font-weight:500;line-height:1.05;text-transform:uppercase;color:#FFFFFF">Съёмка<br><span style="color:#FBE317">мероприятий</span></h2>
+<img src="media/1eca03d89d14ac2aa3d060fa1d464619.jpg" data-video="media/777304789e2fe62fcbc06f0827fb4d36.mp4" alt="Мероприятие у входа в Primavera" style="position:absolute;left:128px;top:302px;width:338px;height:600px;object-fit:cover">
+<img src="media/83b07db2c97c92470a5af1c43b968602.jpg" data-video="media/353fa5360b39eae68806ad646b01aeb4.mp4" alt="Презентация проекта для гостей" style="position:absolute;left:514px;top:302px;width:338px;height:600px;object-fit:cover">
+<img src="media/92752eb0234e7a2ae086c1eab6bf8a9e.jpg" data-video="media/ac6d350d07ba5dd8be9deaa6c73c19ee.mp4" alt="Шоу-программа на сцене" style="position:absolute;left:900px;top:302px;width:338px;height:600px;object-fit:cover">
+<img src="media/0d48b1078c1e2ea433dd9c848c4cc06d.jpg" alt="Гости мероприятия у макета жилого комплекса «Крылатская 33»" style="position:absolute;left:1286px;top:302px;width:338px;height:600px;object-fit:cover">
+</section>
+
+
+<section id="bloggers" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 200px;display:flex;flex-direction:column;justify-content:end;gap:80px">
+<p style="position:absolute;left:128px;top:112px;width:900px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:4px;color:#918F8F">БЛОГЕРЫ И ПОСЕВЫ</p>
+<h2 style="position:absolute;left:128px;top:222px;width:1664px;font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:88px;font-weight:500;line-height:1.08;text-transform:uppercase;color:#FFFFFF"><span style="color:#6B6B6B">А ещё работаем</span><br>с блогерами<br>и делаем посевы</h2>
+<div style="position:relative;width:128px;height:128px;display:flex;align-items:center;justify-content:center">
+<div style="position:absolute;left:0px;top:0px;width:22px;height:22px;border-left:2px solid #918F8F;border-top:2px solid #918F8F"></div>
+<div style="position:absolute;right:0px;top:0px;width:22px;height:22px;border-right:2px solid #918F8F;border-top:2px solid #918F8F"></div>
+<div style="position:absolute;left:0px;bottom:0px;width:22px;height:22px;border-left:2px solid #918F8F;border-bottom:2px solid #918F8F"></div>
+<div style="position:absolute;right:0px;bottom:0px;width:22px;height:22px;border-right:2px solid #918F8F;border-bottom:2px solid #918F8F"></div>
+<svg aria-label="Иконка: звезда" viewBox="0 0 64 64" width="64" height="64" style="width:64px;height:64px"><path d="M32 6 L39 24 L58 24 L43 36 L49 56 L32 44 L15 56 L21 36 L6 24 L25 24 Z" fill="none" stroke="#FBE317" stroke-width="3" stroke-linejoin="round"/></svg>
+</div>
+<div style="position:absolute;left:128px;top:952px;width:1664px;height:1px;background:#3A3A38"></div>
+</section>
+
+
+<section id="bloggers-how" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:row;gap:96px">
+<div style="flex:none;width:620px;display:flex;flex-direction:column;gap:32px">
+<h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:52px;font-weight:500;line-height:1.1;text-transform:uppercase;color:#FFFFFF">Напрямую, <span style="color:#FBE317">без посредников</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#FFFFFF">Мы работаем напрямую с блогерами и владельцами каналов без привлечения сторонних сервисов. Это прозрачные условия, гибкие форматы, приоритетное размещение и возможность оперативно вносить правки.</p>
+<p style="font-size:28px;line-height:1.4;color:#D9D9D9">Сочетаем собственные наработанные контакты и точечный подбор авторов под задачи проекта — используем только актуальные и эффективные площадки.</p>
+</div>
+<div style="position:absolute;left:844px;top:112px;width:454px;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid #3A3A38"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">1</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9"><b style="color:#FFFFFF">Подбор площадок</b> — формируем медиаплан исходя из целей кампании, ЦА, тематики и нужных KPI.</p></div>
+<div style="position:absolute;left:1338px;top:112px;width:454px;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid #3A3A38"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">2</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9"><b style="color:#FFFFFF">Переговоры и договоры</b> — прямой контакт с каждой площадкой: условия и сроки размещений.</p></div>
+<div style="position:absolute;left:844px;top:390px;width:454px;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid #3A3A38"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">3</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9"><b style="color:#FFFFFF">Подготовка контента</b> — пишем посты, готовим ТЗ для блогера, согласовываем материалы.</p></div>
+<div style="position:absolute;left:1338px;top:390px;width:454px;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid #3A3A38"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">4</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9"><b style="color:#FFFFFF">Маркировка</b> — соблюдаем все требования законодательства и рекламные стандарты.</p></div>
+<div style="position:absolute;left:844px;top:668px;width:454px;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid #3A3A38"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">5</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9"><b style="color:#FFFFFF">Контроль размещений</b> — проверяем публикации на соответствие контенту и срокам.</p></div>
+<div style="position:absolute;left:1338px;top:668px;width:454px;display:flex;flex-direction:column;gap:14px;padding-top:20px;border-top:1px solid #3A3A38"><p style="width:44px;padding:4px 0px;text-align:center;font-family:'TT Norms', Arial, sans-serif;font-size:24px;border:2px solid #FBE317;color:#FBE317">6</p><p style="font-size:24px;line-height:1.35;color:#D9D9D9"><b style="color:#FFFFFF">Отчётность</b> — статистика и подробный отчёт по кампании: KPI и ссылки на размещения.</p></div>
+</section>
+
+
+<section id="campaigns" data-transition="fade" style="display:flex; flex-direction:column; gap:48px; padding:112px 128px 160px; background:#121212">
+  <h2 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:64px; font-weight:500; line-height:1.1; text-transform:uppercase; color:#ffffff">Примеры <span style="color:#fbe317">наших кампаний</span></h2>
+  <div style="position:absolute; top:280px; left:128px; width:470px; display:flex; flex-direction:column; gap:16px; padding:20px 0 0; border-top:1px solid #3a3a38">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:32px; text-transform:uppercase; color:#fbe317">LEGENDA</p>
+    <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.5; color:#d9d9d9"><span style="color:#ffffff"><b>Цель:</b></span> охват и трафик в TG-канал<br><span style="color:#ffffff"><b>Формат:</b></span> Instagram, сторис<br><span style="color:#ffffff"><b>Результат:</b></span> 1 306 переходов, CTR 3,2%</p>
+  </div>
+  <div style="position:absolute; top:600px; left:128px; width:470px; display:flex; flex-direction:column; gap:16px; padding:20px 0 0; border-top:1px solid #3a3a38">
+    <p style="font-family:'Druk Text Wide Cyr', Arial, sans-serif; font-size:32px; text-transform:uppercase; color:#fbe317">Дом Горизонтов</p>
+    <p style="font-family:'Golos Text', Arial, sans-serif; font-size:24px; line-height:1.5; color:#d9d9d9"><span style="color:#ffffff"><b>Цель:</b></span> трафик на сайт<br><span style="color:#ffffff"><b>Формат:</b></span> Telegram, нативный пост<br><span style="color:#ffffff"><b>Результат:</b></span> 430 переходов, CTR 4%</p>
+  </div>
+  <p style="position:absolute; top:230px; left:648px; width:736px; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#918f8f">LEGENDA</p>
+  <p style="position:absolute; top:230px; left:1432px; width:360px; font-family:'TT Norms', Arial, sans-serif; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#918f8f">Дом Горизонтов&nbsp;</p>
+  <img src="media/c6142392f21c198ef6a74fce22e90e63.jpg" alt="Сторис блогера: прогулка в Севкабель Порту" style="position:absolute; top:280px; left:648px; width:360px; height:640px">
+  <img src="media/9b2fec32096250dcd8850fbde4e99706.jpg" alt="Сторис блогера со ссылкой на Telegram-канал LEGENDA" style="position:absolute; top:280px; left:1024px; width:360px; height:640px">
+  <img src="media/e43dc4750f3e68b46b6dfdb4c63586bb.jpg" alt="Нативный пост в Telegram-канале о квартирах в «Доме Горизонтов»" style="position:absolute; top:280px; left:1432px; width:360px; height:640px">
+</section>
+
+
+<section id="case-mantera" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:40px;width:1200px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Mantera Seaview Residence · Five Development</p>
+<p style="position:absolute;right:128px;top:40px;width:420px;text-align:right;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;color:#FBE317"><a href="https://vk.com/mantera_residence">VK</a>     <a href="https://t.me/MANTERAresidence">TELEGRAM</a></p>
+<img src="media/8b40abbacc6fe49abe88ea785b538393.jpg" alt="Подборка постов и визуалов для соцсетей Mantera Seaview Residence" style="position:absolute;left:128px;top:104px;width:1664px;height:936px;object-fit:cover">
+</section>
+
+
+<section id="case-dreamtowers" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:40px;width:1200px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Dream Towers · Regions Development</p>
+<p style="position:absolute;right:128px;top:40px;width:420px;text-align:right;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;color:#FBE317"><a href="https://vk.com/dreamtowersru">VK</a>     <a href="https://t.me/dreamtowersru">TELEGRAM</a></p>
+<img src="media/2e4c602c5bd1dfc9c2b48f9178eea487.jpg" alt="Подборка постов и визуалов для соцсетей Dream Towers" style="position:absolute;left:128px;top:104px;width:1664px;height:936px;object-fit:cover">
+</section>
+
+
+<section id="case-preobr" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:40px;width:1200px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   Преображенская площадь · Regions Development</p>
+<p style="position:absolute;right:128px;top:40px;width:420px;text-align:right;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;color:#FBE317"><a href="https://vk.com/public215389673">VK</a>     <a href="https://t.me/moscow_pp">TELEGRAM</a></p>
+<img src="media/775d1ae6a6e16c40eb698fedf7e75336.jpg" alt="Подборка постов и визуалов для соцсетей ЖК «Преображенская площадь»" style="position:absolute;left:128px;top:104px;width:1664px;height:936px;object-fit:cover">
+</section>
+
+
+<section id="case-indy" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:0px;display:flex;flex-direction:column">
+<p style="position:absolute;left:128px;top:40px;width:1200px;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF"><span style="color:#FBE317">Кейс</span>   /   INDY Towers · Аквилон</p>
+<p style="position:absolute;right:128px;top:40px;width:420px;text-align:right;font-family:'TT Norms', Arial, sans-serif;font-size:24px;letter-spacing:3px;color:#FBE317"><a href="https://vk.com/indytowers_akvilon">VK</a>     <a href="https://t.me/indytowers_akvilon">TELEGRAM</a></p>
+<img src="media/bea811a2c1f2a95d04548138705d9b12.jpg" alt="Подборка постов и визуалов для соцсетей INDY Towers" style="position:absolute;left:128px;top:104px;width:1664px;height:936px;object-fit:cover">
+</section>
+
+
+<section id="contacts" data-transition="fade" style="background:#121212;color:#FFFFFF;font-family:'Golos Text', Arial, sans-serif;padding:128px 160px;display:flex;flex-direction:column;justify-content:space-between">
+<p style="position:absolute;left:840px;top:430px;width:1080px;height:220px;font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:170px;line-height:1.2;text-align:center;white-space:nowrap;color:#1A1A1A;transform:translate(440px, 0px) rotate(-90deg)">CONTACTS</p>
+<div style="display:flex;flex-direction:column;gap:72px">
+<h1 style="font-family:'Druk Text Wide Cyr', Arial, sans-serif;font-size:140px;font-weight:500;line-height:1;text-transform:uppercase;color:#FFFFFF">Контакты</h1>
+<div style="display:grid;grid-template-columns:520px 520px;grid-template-rows:auto auto auto;gap:28px 64px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:28px"><div style="flex:none;width:64px;height:64px;background:#FBE317;display:flex;align-items:center;justify-content:center"><x-icon name="PaperPlane" style="color:#121212;width:36px;height:36px"></x-icon></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:32px;color:#FFFFFF">@Grechkovsky</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:28px"><div style="flex:none;width:64px;height:64px;background:#FBE317;display:flex;align-items:center;justify-content:center"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:26px;color:#121212">VK</p></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:32px;color:#FFFFFF">inhousemedia</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:28px"><div style="flex:none;width:64px;height:64px;background:#FBE317;display:flex;align-items:center;justify-content:center"><svg aria-label="Почта" viewBox="0 0 36 36" width="36" height="36" style="width:36px;height:36px"><g fill="none" stroke="#121212" stroke-width="3" stroke-linejoin="round"><rect x="3" y="8" width="30" height="21"/><path d="M3 8 L18 20 L33 8"/></g></svg></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:32px;color:#FFFFFF"><a href="mailto:hi@inhouse.media">hi@inhouse.media</a></p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:28px"><div style="flex:none;width:64px;height:64px;background:#FBE317;display:flex;align-items:center;justify-content:center"><svg aria-label="Instagram" viewBox="0 0 36 36" width="36" height="36" style="width:36px;height:36px"><g fill="none" stroke="#121212" stroke-width="3"><rect x="4" y="4" width="28" height="28" rx="8"/><circle cx="18" cy="18" r="6.5"/></g><circle cx="26.5" cy="9.5" r="2" fill="#121212"/></svg></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:32px;color:#FFFFFF">inhousemedia</p></div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:28px"><div style="flex:none;width:64px;height:64px;background:#FBE317;display:flex;align-items:center;justify-content:center"><p style="font-family:'TT Norms', Arial, sans-serif;font-size:26px;color:#121212">IN</p></div><p style="font-family:'TT Norms', Arial, sans-serif;font-size:32px;color:#FFFFFF"><a href="https://inhouse.media">www.inhouse.media</a></p></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:64px">
+<svg aria-label="INHOUSE MEDIA" viewBox="0 0 186 128" width="186" height="128" style="width:233px;height:160px"><g transform="translate(-14,-20)"><path fill="#FBE317" d="M81.91,144.4H18.5a.5.5,0,0,1-.5-.5V24.61a.5.5,0,0,1,.5-.5H81.91a.5.5,0,0,1,.5.5v5.45a.5.5,0,1,1-1,0V25.11H19V143.4H81.41V109.12a.5.5,0,0,1,1,0V143.9A.5.5,0,0,1,81.91,144.4Z"/><g fill="#FFFFFF"><path d="M40.86,65.59V38a.53.53,0,0,1,.58-.58h2.07a.54.54,0,0,1,.57.58V65.59a.52.52,0,0,1-.57.57H41.44A.54.54,0,0,1,40.86,65.59Z"/><path d="M55.58,65.59V38a.55.55,0,0,1,.58-.58h1.69c.42,0,.61.08.76.5l6.87,17.37a.19.19,0,0,0,.38,0V38a.55.55,0,0,1,.58-.58h2A.54.54,0,0,1,69,38V65.62a.51.51,0,0,1-.57.54H66.78A.72.72,0,0,1,66,65.7L59.150,48.37c-.08-.23-.38-.19-.38.08V65.59a.54.54,0,0,1-.58.57h-2A.54.54,0,0,1,55.58,65.59Z"/><path d="M80.54,65.59V38a.53.53,0,0,1,.58-.58h2.07a.54.54,0,0,1,.57.58V49.52a.54.54,0,0,0,.58.57h5.1a.54.54,0,0,0,.57-.57V38a.53.53,0,0,1,.58-.58h2.07a.54.54,0,0,1,.57.58V65.59a.52.52,0,0,1-.57.57H90.59a.54.54,0,0,1-.58-.57V53.74a.54.54,0,0,0-.57-.58h-5.1a.55.55,0,0,0-.58.58V65.59a.52.52,0,0,1-.57.57H81.12A.54.54,0,0,1,80.54,65.59Z"/><path d="M104.35,60.41V43.15c0-3.6,2.6-5.94,6.17-5.940s6.17,2.34,6.17,5.94V60.41c0,3.6-2.6,5.94-6.17,5.94S104.35,64,104.35,60.41Zm9.12-.81V44c0-2.53-1.22-3.68-3-3.68s-3,1.15-3,3.68V59.6c0,2.53,1.230,3.68,3,3.68S113.47,62.13,113.47,59.6Z"/><path d="M127.43,60.41V38a.52.52,0,0,1,.57-.58h2.07a.55.55,0,0,1,.58.58V59.6c0,2.53,1.22,3.68,2.95,3.68s3-1.15,3-3.68V38a.53.53,0,0,1,.58-.58h2.07a.54.54,0,0,1,.57.58V60.41c0,3.6-2.6,5.94-6.17,5.94S127.43,64,127.43,60.41Z"/><path d="M150.12,60.41v-1.8a.55.55,0,0,1,.58-.58h2.07a.52.52,0,0,1,.57.58v1c0,2.53,1.23,3.68,3,3.68s2.95-1.15,2.95-3.68v-1c0-2.07-1.92-3.53-4.07-5.64s-5.06-4.41-5.06-8V43.15c0-3.6,2.61-5.94,6.180-5.94s6.17,2.34,6.17,5.94V45a.54.54,0,0,1-.58.57h-2.07a.52.52,0,0,1-.57-.57V44c0-2.53-1.270-3.68-2.95-3.68s-3,1.15-3,3.68v1c0,2.07,1.84,3.49,4,5.67s5.1,4.37,5.1,8v1.8c0,3.6-2.61,5.94-6.17,5.94S150.12,64,150.12,60.41Z"/><path d="M173.2,65.59V38a.53.53,0,0,1,.58-.58h8.12a.55.55,0,0,1,.58.58v1.76a.55.55,0,0,1-.58.58H177a.54.54,0,0,0-.58.57V49.6a.54.54,0,0,0,.58.57h4.9a.55.55,0,0,1,.58.58v1.76a.54.54,0,0,1-.58.57H177a.55.55,0,0,0-.58.58v9a.55.55,0,0,0,.58.58h4.9a.54.54,0,0,1,.58.57v1.77a.54.54,0,0,1-.58.57h-8.12A.54.54,0,0,1,173.2,65.59Z"/><path d="M54.51,74a.74.74,0,0,1,.69-.58h2.11a.53.53,0,0,1,.58.58v27.6a.55.55,0,0,1-.58.58H55.2a.52.52,0,0,1-.57-.58V84.42a.19.19,0,0,0-.38,0l-3.19,9.39a.75.75,0,0,1-.69.57h-2a.72.72,0,0,1-.69-.57l-3.22-9.39a.2.2,0,0,0-.39,0v17.14a.52.52,0,0,1-.57.58H41.44a.55.55,0,0,1-.58-.58V74a.53.53,0,0,1,.58-.58h2.07a.74.74,0,0,1,.69.58l4.94,14.6a.22.22,0,0,0,.43,0Z"/><path d="M69.39,101.56V74a.52.52,0,0,1,.57-.58h8.13a.54.54,0,0,1,.57.58v1.76a.54.54,0,0,1-.57.57H73.18a.54.54,0,0,0-.57.58v8.7a.54.54,0,0,0,.57.58h4.91a.54.54,0,0,1,.57.57v1.77a.54.54,0,0,1-.57.57H73.18a.54.54,0,0,0-.57.58v9a.54.54,0,0,0,.57.57h4.91a.54.54,0,0,1,.57.58v1.76a.54.54,0,0,1-.57.58H70A.54.54,0,0,1,69.39,101.56Z"/><path d="M89.74,101.56V74a.53.53,0,0,1,.58-.58h5.6c3.56,0,6.17,2.34,6.17,5.94V96.2c0,3.6-2.61,5.94-6.17,5.94h-5.6A.55.55,0,0,1,89.74,101.56Zm6.18-2.49c1.72,0,3-1.15,3-3.68V80.13c0-2.53-1.23-3.68-3-3.68H93.54A.54.54,0,0,0,93,77V98.5a.54.54,0,0,0,.58.57Z"/><path d="M113.2,101.56V74a.53.53,0,0,1,.58-.58h2.07a.55.55,0,0,1,.58.58v27.6a.53.53,0,0,1-.58.58h-2.07A.55.55,0,0,1,113.2,101.56Z"/><path d="M126.47,101.49l4.83-27.42c.11-.57.23-.69.8-.69h1.58c.53,0,.65.12.76.69l4.84,27.42c.07.46-.12.65-.5.65h-2c-.34,0-.49-.12-.57-.58l-.5-3c0-.23-.11-.57-.57-.57h-4.45c-.46,0-.54.34-.58.57l-.5,3c-.07.46-.23.58-.57.58h-2C126.58,102.14,126.39,102,126.47,101.49Zm8.280-6.44c.27,0,.35-.16.31-.43l-2-12.15a.19.19,0,0,0-.38,0l-2,12.15c0,.27,0,.43.3.43Z"/></g><path fill="#FBE317" d="M192,64.17a2,2,0,0,1,2-2,2,2,0,1,1,0,4A2,2,0,0,1,192,64.17Z"/></g></svg><p style="font-family:'TT Norms', Arial, sans-serif;font-size:28px;line-height:1.4;color:#FFFFFF">Делаем SMM для девелоперских проектов.<br><span style="color:#FBE317">И очень этим гордимся.</span></p>
+</div>
+</section>
+
+</div></div>
+
+<nav id="bar" aria-label="Навигация по презентации">
+  <button id="prev" aria-label="Предыдущий слайд"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <div id="count" aria-live="polite"><b>1</b> / 1</div>
+  <button id="next" aria-label="Следующий слайд"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+  <button id="ovw" aria-label="Все слайды"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></button>
+  <button id="fs" aria-label="Во весь экран"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+</nav>
+
+<div id="grid" role="dialog" aria-label="Все слайды"><h2>INHOUSE<span>.</span>MEDIA — все слайды</h2><button class="close" aria-label="Закрыть">×</button><div class="wrap"></div></div>
+
+<script>
+(() => {
+  "use strict";
+  const ICONS = { Play: 57537, PaperPlane: 57530, /*__ICONMAP__*/ };
+  const BUILD = { // from the deck player: 380ms, ease cubic-bezier(.2,.7,.2,1)
+    fade: ["", "cubic-bezier(0.2,0.7,0.2,1)"], rise: ["translateY(48px)", "cubic-bezier(0.2,0.7,0.2,1)"],
+    drop: ["translateY(-48px)", "cubic-bezier(0.2,0.7,0.2,1)"], left: ["translateX(-72px)", "cubic-bezier(0.2,0.7,0.2,1)"],
+    right: ["translateX(72px)", "cubic-bezier(0.2,0.7,0.2,1)"], scale: ["scale(0.8)", "cubic-bezier(0.2,0.7,0.2,1)"],
+    pop: ["scale(0.5)", "cubic-bezier(0.34,1.56,0.64,1)"]
+  };
+  const BUILD_MS = 380, FIRST_STEP_MS = 600, NEXT_STEP_MS = 520, FADE_MS = 320;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const stage = document.getElementById("stage");
+  const slides = [...stage.querySelectorAll(":scope > section")].filter(s => !s.hasAttribute("hidden"));
+  const N = slides.length;
+
+  /* ---------- prepare slide markup ---------- */
+  function prepare(root, live) {
+    root.querySelectorAll("x-icon").forEach(el => {
+      const c = ICONS[el.getAttribute("name")];
+      if (c) el.textContent = String.fromCodePoint(c);
+      const w = parseFloat(el.style.width) || 48, h = parseFloat(el.style.height) || w;
+      el.style.fontSize = Math.round(Math.min(w, h) * 0.5) + "px";
+      el.setAttribute("aria-hidden", "true");
+    });
+    root.querySelectorAll("x-connector").forEach(el => {
+      const host = el.parentElement;
+      const n = k => parseFloat(el.getAttribute(k));
+      const x1 = n("x1"), y1 = n("y1"), x2 = n("x2"), y2 = n("y2");
+      const route = el.getAttribute("route") || "straight";
+      let pts;
+      if (route === "hv") pts = [[x1, y1], [x2, y1], [x2, y2]];
+      else if (route === "vh") pts = [[x1, y1], [x1, y2], [x2, y2]];
+      else if (route === "elbow") { const mx = (x1 + x2) / 2; pts = [[x1, y1], [mx, y1], [mx, y2], [x2, y2]]; }
+      else pts = [[x1, y1], [x2, y2]];
+      const color = el.style.color || "#6b6b6b", w = parseFloat(el.style.borderWidth) || 2;
+      const bs = el.style.borderStyle;
+      const dash = bs === "dashed" ? `stroke-dasharray="${w * 4} ${w * 3}"` : bs === "dotted" ? `stroke-dasharray="${w} ${w * 2}" stroke-linecap="round"` : "";
+      const head = (el.getAttribute("head") || "end").trim().toLowerCase();
+      const hs = el.getAttribute("head-start") || (head === "both" ? "filled" : "none");
+      const he = el.getAttribute("head-end") || (head === "none" ? "none" : "filled");
+      const L = Math.max(4, Math.ceil(2.2 * w) + 1) * 2;
+      const mk = (kind, id) => kind === "none" ? "" : `<marker id="${id}" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="${kind === "open" ? 9 : 8}" refY="5" markerWidth="${L}" markerHeight="${L}" orient="auto-start-reverse">` +
+        (kind === "open" ? `<path d="M1 1L9 5L1 9" fill="none" stroke="${color}" stroke-width="${10 * w / L}" stroke-linecap="round" stroke-linejoin="round"/>` : `<path d="M0 0L10 5L0 10z" fill="${color}"/>`) + `</marker>`;
+      const id = "m" + Math.random().toString(36).slice(2, 8);
+      const marker = mk(hs, id + "s") + mk(he, id + "e");
+      const me = he !== "none" ? `marker-end="url(#${id}e)"` : "";
+      const ms = hs !== "none" ? `marker-start="url(#${id}s)"` : "";
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("class", "x-conn"); svg.setAttribute("aria-hidden", "true");
+      if (host.tagName !== "SECTION") { svg.style.width = "100%"; svg.style.height = "100%"; }
+      svg.innerHTML = `<defs>${marker}</defs><polyline points="${pts.map(p => p.join(",")).join(" ")}" fill="none" stroke="${color}" stroke-width="${w}" ${dash} ${me} ${ms}/>`;
+      el.replaceWith(svg);
+    });
+    root.querySelectorAll("img[data-video]").forEach(img => {
+      if (!live) return; // thumbnails keep the still
+      const v = document.createElement("video");
+      v.src = img.dataset.video; v.poster = img.getAttribute("src");
+      v.muted = !(img.dataset.videoSound === "on"); v.loop = true; v.playsInline = true;
+      v.setAttribute("playsinline", ""); v.setAttribute("webkit-playsinline", "");
+      v.preload = "none"; v.setAttribute("aria-label", img.alt || "");
+      v.style.cssText = img.style.cssText;
+      if (img.dataset.buildIn) v.dataset.buildIn = img.dataset.buildIn;
+      if (img.dataset.videoStart) v.dataset.videoStart = img.dataset.videoStart;
+      if (img.dataset.videoDelay) v.dataset.videoDelay = img.dataset.videoDelay;
+      v.addEventListener("click", e => { e.stopPropagation(); v.paused ? v.play().catch(() => {}) : v.pause(); v.dataset.userPaused = v.paused ? "1" : ""; });
+      img.replaceWith(v);
+    });
+  }
+  slides.forEach(s => prepare(s, true));
+
+  /* ---------- scaling ---------- */
+  function fit() {
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+    stage.style.transformOrigin = "50% 50%";
+    stage.style.transform = `translate(-50%,-50%) scale(${k})`;
+  }
+  addEventListener("resize", fit); fit();
+
+  /* ---------- builds ---------- */
+  let timers = [], anims = [];
+  function clearBuilds() { timers.forEach(clearTimeout); timers = []; anims.forEach(a => { try { a.finish(); } catch (_) {} }); anims = []; }
+  function parseBuild(el) {
+    const [effect = "fade", order = "1", auto] = (el.dataset.buildIn || "").trim().split(/\s+/);
+    return { effect: BUILD[effect] ? effect : "fade", order: parseInt(order, 10) || 1 };
+  }
+  function resetBuilds(s) {
+    s.querySelectorAll("[data-build-in]").forEach(el => { el.style.opacity = reduce ? "" : "0"; });
+  }
+  function runBuilds(s, instant) {
+    const els = [...s.querySelectorAll("[data-build-in]")];
+    if (!els.length) return;
+    if (instant || reduce) { els.forEach(el => el.style.opacity = ""); return; }
+    const steps = new Map();
+    els.forEach(el => { const b = parseBuild(el); if (!steps.has(b.order)) steps.set(b.order, []); steps.get(b.order).push([el, b]); });
+    const orders = [...steps.keys()].sort((a, b) => a - b);
+    orders.forEach((o, i) => {
+      const t = FIRST_STEP_MS + i * NEXT_STEP_MS;
+      timers.push(setTimeout(() => {
+        steps.get(o).forEach(([el, b]) => {
+          const base = el.style.transform || "";
+          const [from, ease] = BUILD[b.effect];
+          el.style.opacity = "";
+          const a = el.animate([
+            { opacity: 0, transform: (base + " " + from).trim() || "none" },
+            { opacity: getComputedStyle(el).opacity, transform: base || "none" }
+          ], { duration: BUILD_MS, easing: ease, fill: "none" });
+          anims.push(a);
+        });
+      }, t));
+    });
+  }
+
+  /* ---------- video ---------- */
+  function playVideos(s) {
+    s.querySelectorAll("video").forEach(v => {
+      if (v.dataset.videoStart === "click") return;
+      v.preload = "auto";
+      const go = () => { if (!v.dataset.userPaused) v.play().catch(() => {}); };
+      const d = parseFloat(v.dataset.videoDelay || "0");
+      d > 0 ? timers.push(setTimeout(go, d * 1000)) : go();
+    });
+  }
+  function stopVideos(s) { s.querySelectorAll("video").forEach(v => { v.pause(); }); }
+  function warm(i) { const s = slides[i]; if (s) s.querySelectorAll("video").forEach(v => { if (v.preload === "none") v.preload = "metadata"; }); }
+
+  /* ---------- navigation ---------- */
+  let cur = -1;
+  const count = document.getElementById("count"), prog = document.getElementById("progress");
+  function go(i, opts = {}) {
+    i = Math.max(0, Math.min(N - 1, i));
+    if (i === cur) return;
+    clearBuilds();
+    const prev = slides[cur], next = slides[i];
+    slides.forEach(s => s.classList.remove("leaving"));
+    if (prev) { stopVideos(prev); prev.classList.remove("active"); }
+    resetBuilds(next);
+    next.classList.add("active");
+    if (prev && !opts.instant && !reduce) {
+      prev.classList.add("leaving");
+      next.animate([{ opacity: 0 }, { opacity: 1 }], { duration: FADE_MS, easing: "cubic-bezier(0.33,0.01,0.2,1)" })
+        .finished.then(() => prev.classList.remove("leaving"), () => {});
+    }
+    cur = i;
+    runBuilds(next, opts.instant);
+    playVideos(next);
+    warm(i + 1); warm(i - 1);
+    count.innerHTML = `<b>${i + 1}</b> / ${N}`;
+    prog.style.width = ((i + 1) / N * 100) + "%";
+    const h = "#" + (i + 1);
+    if (location.hash !== h) history.replaceState(null, "", h);
+  }
+  const next = () => go(cur + 1), prev = () => go(cur - 1);
+
+  document.getElementById("next").onclick = e => { e.stopPropagation(); next(); };
+  document.getElementById("prev").onclick = e => { e.stopPropagation(); prev(); };
+  document.getElementById("fs").onclick = e => { e.stopPropagation(); toggleFs(); };
+  document.getElementById("ovw").onclick = e => { e.stopPropagation(); openGrid(); };
+  function toggleFs() {
+    const d = document, el = d.documentElement;
+    if (d.fullscreenElement || d.webkitFullscreenElement) (d.exitFullscreen || d.webkitExitFullscreen).call(d);
+    else (el.requestFullscreen || el.webkitRequestFullscreen || (() => {})).call(el);
+  }
+
+  addEventListener("keydown", e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (grid.classList.contains("open")) { if (e.key === "Escape" || e.key === "g") closeGrid(); return; }
+    switch (e.key) {
+      case "ArrowRight": case "ArrowDown": case "PageDown": case " ": case "Enter": e.preventDefault(); next(); break;
+      case "ArrowLeft": case "ArrowUp": case "PageUp": case "Backspace": e.preventDefault(); prev(); break;
+      case "Home": go(0); break;
+      case "End": go(N - 1); break;
+      case "f": case "F": toggleFs(); break;
+      case "g": case "G": openGrid(); break;
+    }
+  });
+
+  const vp = document.getElementById("viewport");
+  vp.addEventListener("click", e => {
+    if (e.target.closest("a, video")) return;
+    if (moved) return;
+    (e.clientX < innerWidth * 0.3) ? prev() : next();
+  });
+  let sx = 0, sy = 0, moved = false;
+  vp.addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; moved = false; }, { passive: true });
+  vp.addEventListener("touchend", e => {
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { moved = true; dx < 0 ? next() : prev(); setTimeout(() => moved = false, 350); }
+  }, { passive: true });
+  let wheelLock = 0;
+  vp.addEventListener("wheel", e => {
+    const now = Date.now(); if (now < wheelLock || Math.abs(e.deltaY) < 12) return;
+    wheelLock = now + 700; e.deltaY > 0 ? next() : prev();
+  }, { passive: true });
+
+  /* idle chrome */
+  let idleT; const wake = () => { document.body.classList.remove("idle"); clearTimeout(idleT); idleT = setTimeout(() => document.body.classList.add("idle"), 2600); };
+  ["mousemove", "touchstart", "keydown"].forEach(t => addEventListener(t, wake, { passive: true })); wake();
+
+  /* ---------- overview grid ---------- */
+  const grid = document.getElementById("grid"), wrap = grid.querySelector(".wrap");
+  let built = false;
+  function buildGrid() {
+    slides.forEach((s, i) => {
+      const th = document.createElement("div"); th.className = "th"; th.tabIndex = 0;
+      th.setAttribute("role", "button"); th.setAttribute("aria-label", "Слайд " + (i + 1));
+      const mini = document.createElement("div"); mini.className = "mini deck";
+      const clone = s.cloneNode(true);
+      clone.classList.remove("active", "leaving");
+      clone.querySelectorAll("video").forEach(v => { const im = document.createElement("img"); im.src = v.poster; im.alt = ""; im.style.cssText = v.style.cssText; v.replaceWith(im); });
+      clone.querySelectorAll("[data-build-in]").forEach(el => el.style.opacity = "");
+      clone.querySelectorAll("img").forEach(im => im.loading = "lazy");
+      clone.removeAttribute("id");
+      mini.appendChild(clone); th.appendChild(mini);
+      const n = document.createElement("span"); n.className = "n"; n.textContent = i + 1; th.appendChild(n);
+      th.onclick = () => { closeGrid(); go(i, { instant: false }); };
+      th.onkeydown = e => { if (e.key === "Enter") th.onclick(); };
+      wrap.appendChild(th);
+    });
+    built = true;
+  }
+  function sizeThumbs() { wrap.querySelectorAll(".th").forEach(th => { th.querySelector(".mini").style.transform = `scale(${th.clientWidth / 1920})`; }); }
+  function openGrid() {
+    if (!built) buildGrid();
+    grid.classList.add("open"); if (slides[cur]) stopVideos(slides[cur]);
+    sizeThumbs();
+    wrap.querySelectorAll(".th").forEach((t, i) => t.classList.toggle("cur", i === cur));
+    wrap.children[cur]?.scrollIntoView({ block: "center" });
+  }
+  function closeGrid() { grid.classList.remove("open"); if (slides[cur]) playVideos(slides[cur]); }
+  grid.querySelector(".close").onclick = closeGrid;
+  addEventListener("resize", () => { if (grid.classList.contains("open")) sizeThumbs(); });
+
+  /* ---------- start ---------- */
+  addEventListener("hashchange", () => { const n = parseInt(location.hash.slice(1), 10); if (n) go(n - 1); });
+  document.addEventListener("visibilitychange", () => { const s = slides[cur]; if (!s) return; if (document.hidden) { stopVideos(s); clearBuilds(); runBuilds(s, true); } else playVideos(s); });
+  const startAt = Math.max(1, parseInt(location.hash.slice(1), 10) || 1) - 1;
+  slides.forEach(resetBuilds);
+  const ready = document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 2500))]) : Promise.resolve();
+  ready.then(() => { document.getElementById("loader").classList.add("done"); go(startAt); });
+})();
+</script>
+</body>
+</html>
